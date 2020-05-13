@@ -1,7 +1,7 @@
 import subprocess
-
-interface = "wlp3s0"
-new_mac="00:22:33:44:77:55"
+#"wlp3s0"
+interface = input("interface > ") 
+new_mac = input("nueva mac > ")
 
 print("[+] CHANGING MAC ADRESS FOR " + interface + " to " + new_mac)
 
