@@ -18,7 +18,7 @@ def get_arguments():
     return options
         
 def  change_mac(interface, new_mac):
-        print("[+] CHANGING MAC ADRESS FOR " + interface + " to " + new_mac)
+        print("[+] CAMBIANDO LA DIRECCIÓN MAC A " + interface + " to " + new_mac)
 
         subprocess.call(["ifconfig", interface, "down"])
         subprocess.call(["ifconfig", interface, "hw", "ether", new_mac])
@@ -41,9 +41,15 @@ def get_current_mac(interface):
 #interface = options.interface
 #new_mac = options.new_mac
 options = get_arguments()
-#change_mac(options.interface, options.new_mac)
+
 current_mac = get_current_mac(options.interface)
 
 print("mac actual = " + current_mac)
+change_mac(options.interface, options.new_mac)
 
+current_mac= get_current_mac(options.interface)
 
+if current_mac == options.new_mac:
+    print("[+] dirección mac cambio a " + options.new_mac)
+else:
+    print("[-] no cambió la mac")
